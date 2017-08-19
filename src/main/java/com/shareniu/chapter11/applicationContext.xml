@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+		"
+		>
+		 <context:component-scan base-package="com.shareniu.activiti.learing.ch14.listener"/>  
+	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1:3306/activiti?useUnicode=true&amp;characterEncoding=UTF-8
+			</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password" value="" />
+	</bean>
+	<bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+        <bean id="processEngineConfiguration"
+          class="org.activiti.spring.SpringProcessEngineConfiguration">  
+           <property name="dataSource" ref="dataSource" /> 
+           <property name="databaseSchemaUpdate" value="true" />  
+             <property name="transactionManager" ref="transactionManager" />  
+             <!--   <property name="jobExecutorActivate" value="true" /> -->
+               <!-- <property name="asyncExecutorAsyncJobLockTimeInMillis" value="1000" />
+               <property name="asyncExecutorEnabled" value="true"></property> -->
+               <property name="asyncExecutorEnabled" value="false"></property> 
+               <property name="jobExecutorActivate" value="true"></property> 
+             <!--   <property name="asyncExecutorActivate" value="true"></property>  -->
+            <!--    <property name="asyncExecutorAsyncJobLockTimeInMillis" value="1000"></property>  -->
+          <!--    <property name="asyncExecutorAsyncJobLockTimeInMillis" value="50000000"></property>   -->
+        </bean> 
+        <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">  
+        <property name="processEngineConfiguration" ref="processEngineConfiguration" />  
+    </bean>   
+     <bean id="repositoryService" factory-bean="processEngine"  
+        factory-method="getRepositoryService" />  
+    <bean id="runtimeService" factory-bean="processEngine"  
+        factory-method="getRuntimeService" />  
+    <bean id="taskService" factory-bean="processEngine"  
+        factory-method="getTaskService" />  
+    <bean id="historyService" factory-bean="processEngine"  
+        factory-method="getHistoryService" />  
+    <bean id="managementService" factory-bean="processEngine"  
+        factory-method="getManagementService" />  
+        <bean id="person" class="com.shareniu.activiti.learing.ch14.listener.Person">
+        <property name="a" value="1"></property>
+        </bean>
+ </beans>

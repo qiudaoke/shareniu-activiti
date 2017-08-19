@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions 
+xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:activiti="http://activiti.org/bpmn"
+     targetNamespace="shareniu">
+     <process>
+     <!-- userTask 任务节点 -->
+	  <userTask id="operationTask" name="operationTask"  activiti:assignee="admin"></userTask>
+	  <!-- endEvent结束节点 -->
+	<endEvent id="end" name="End"></endEvent>
+     </process>
+</definitions>

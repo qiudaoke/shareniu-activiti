@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1:3306/activiti1?useUnicode=true&amp;characterEncoding=UTF-8
+			</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password" value="" />
+	</bean>
+	<bean id="processEngineConfiguration"
+		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+		<!-- 将自定义的 ShareniuUserTaskParseHandler类进行注入 -->
+		<property name="customDefaultBpmnParseHandlers">
+			<list>
+				<bean id="shareniuUserTaskParseHandler" class="com.shareniu.chapter14.ShareniuUserTaskParseHandler"></bean>
+			</list>
+		</property>
+		<property name="history" value="audit" />
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="dataSource" ref="dataSource">
+		</property>
+		<property name="activityFontName" value="宋体">
+		</property>
+		<property name="labelFontName" value="宋体">
+		</property>
+		<property name="annotationFontName" value="宋体">
+		</property>
+		<!-- 用于替换默认的活动行为类工厂 -->
+		<property name="activityBehaviorFactory" ref="shareniuActivity" />
+	</bean>
+	<bean id="shareniuActivity" class="com.shareniu.chapter14.ShareniuActivityBehaviorFactory" />
+</beans>

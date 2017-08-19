@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="timerIntermediateEventTest01" name="timer-intermediate-transition" isExecutable="true">
+    <startEvent id="start"></startEvent>
+    <userTask id="task01" name="task01"></userTask>
+    <intermediateCatchEvent id="timer01">
+      <timerEventDefinition>
+        <timeDuration>PT20S</timeDuration>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <userTask id="task02" name="task02"></userTask>
+    <endEvent id="end"></endEvent>
+    <sequenceFlow id="f2" sourceRef="task01" targetRef="timer01"></sequenceFlow>
+    <sequenceFlow id="f3" sourceRef="timer01" targetRef="task02"></sequenceFlow>
+    <sequenceFlow id="f4" sourceRef="task02" targetRef="end"></sequenceFlow>
+    <sequenceFlow id="f1" sourceRef="start" targetRef="task01"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_timerIntermediateEventTest01">
+    <bpmndi:BPMNPlane bpmnElement="timerIntermediateEventTest01" id="BPMNPlane_timerIntermediateEventTest01">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="135.0" y="89.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task01" id="BPMNShape_task01">
+        <omgdc:Bounds height="59.0" width="105.0" x="215.0" y="77.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="timer01" id="BPMNShape_timer01">
+        <omgdc:Bounds height="35.0" width="35.0" x="360.0" y="89.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task02" id="BPMNShape_task02">
+        <omgdc:Bounds height="59.0" width="105.0" x="436.0" y="77.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="35.0" width="35.0" x="580.0" y="89.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="f2" id="BPMNEdge_f2">
+        <omgdi:waypoint x="320.0" y="106.0"></omgdi:waypoint>
+        <omgdi:waypoint x="360.0" y="106.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="f3" id="BPMNEdge_f3">
+        <omgdi:waypoint x="395.0" y="106.0"></omgdi:waypoint>
+        <omgdi:waypoint x="436.0" y="106.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="f4" id="BPMNEdge_f4">
+        <omgdi:waypoint x="541.0" y="106.0"></omgdi:waypoint>
+        <omgdi:waypoint x="580.0" y="106.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="f1" id="BPMNEdge_f1">
+        <omgdi:waypoint x="170.0" y="106.0"></omgdi:waypoint>
+        <omgdi:waypoint x="215.0" y="106.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
