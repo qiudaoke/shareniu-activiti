@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1:3306/activiti?useUnicode=true&amp;characterEncoding=UTF-8
+			</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password" value="" />
+	</bean>
+	<bean id="processEngineConfiguration"
+		class="com.shareniu.chapter16.identity.ShareniuProcessEngineConfiguration">
+		<property name="history" value="audit" />
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="dbIdentityUsed" value="false" />
+		<property name="dataSource" ref="dataSource">
+		</property>
+		<property name="customDefaultBpmnParseHandlers">
+			<list>
+				<bean id="shareniuUserTaskParseHandler" class="com.shareniu.chapter14.ShareniuUserTaskParseHandler"></bean>
+			</list>
+		</property>
+		<property name="activityBehaviorFactory" ref="shareniuActivity" />
+		
+	</bean>
+	<bean id="shareniuActivity"
+		class="com.shareniu.chapter16.identity.ShareniuActivityBehaviorFactory" />
+<!-- <property name="customSessionFactories">
+			<list>
+				<bean class="com.shareniu.chapter16.identity.ShareniuUserManagerFactory"></bean>
+				<bean class="com.shareniu.chapter16.identity.ShareniuUserManagerFactory"></bean>
+				<bean
+					class="com.shareniu.chapter16.identity.ShareniuIdentityLinkSessionFactory"></bean>
+			</list>
+		</property> -->
+</beans>

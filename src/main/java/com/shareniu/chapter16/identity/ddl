@@ -1,0 +1,23 @@
+create table ACT_SHARENIU_ID_USER (
+    ID_ varchar(64),
+    REV_ integer,
+    NAME_ varchar(255),
+    PWD_ varchar(255),
+    LOGINID_ varchar(255),
+    primary key (ID_)
+);
+ insert into ${prefix}ACT_SHARENIU_ID_USER (ID_, REV_, NAME_, PWD_, LOGINID_)
+    values (
+      #{id ,jdbcType=VARCHAR},
+      1,
+      #{name ,jdbcType=VARCHAR},
+      #{password ,jdbcType=VARCHAR},
+      #{loginId ,jdbcType=VARCHAR}
+    )
+    
+    	protected String name;
+	protected String id;
+	protected String password;
+	
+	DEP_ID_
+	protected String loginId;
