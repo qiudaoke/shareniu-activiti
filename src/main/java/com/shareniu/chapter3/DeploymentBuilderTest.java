@@ -147,19 +147,7 @@ public class DeploymentBuilderTest {
 		Deployment deploy = deploymentBuilder.deploy();
 	}
 
-	@Test
-	public void testProcessValidator() {
-		BpmnModel bpmnModel = getBpmnModel();
-		
-		Process process = bpmnModel.getProcesses().get(0);
-		process.getFlowElement(flowElementId)
-		ProcessValidatorFactory processValidatorFactory = new ProcessValidatorFactory();
-		ProcessValidator defaultProcessValidator = processValidatorFactory
-				.createDefaultProcessValidator();
-		List<ValidationError> validate = defaultProcessValidator
-				.validate(bpmnModel);
-		System.out.println(validate.size());
-	}
+	
 
 	@Test
 	public void testConvertToXML() throws Exception {

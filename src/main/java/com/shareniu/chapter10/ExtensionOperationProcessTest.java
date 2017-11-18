@@ -30,7 +30,7 @@ import org.activiti.engine.repository.DeploymentBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.shareniu.activiti.learing.ch3.DeploymentBuilderTest;
+import com.shareniu.chapter3.DeploymentBuilderTest;
 import com.shareniu.chapter9.App;
 /**
  *  Activiti权威指南书配套代码

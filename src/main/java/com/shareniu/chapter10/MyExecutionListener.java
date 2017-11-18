@@ -15,7 +15,6 @@ public class MyExecutionListener implements ExecutionListener {
 	 */
 	private static final long serialVersionUID = -139603646293616249L;
 
-	@Override
 	public void notify(DelegateExecution execution) throws Exception {
 		System.out.println(execution.getEventName());
 	}

@@ -34,7 +34,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.core.io.UrlResource;
 
-import com.shareniu.activiti.learing.ch3.DeploymentBuilderTest;
+import com.shareniu.chapter3.DeploymentBuilderTest;
+
 /**
  *  Activiti权威指南书配套代码
  *  

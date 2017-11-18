@@ -20,8 +20,8 @@ import org.activiti.engine.task.Task;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.shareniu.activiti.learing.ch3.DeploymentBuilderTest;
 import com.shareniu.chapter15.App;
+import com.shareniu.chapter3.DeploymentBuilderTest;
 
 public class VariabletypeTest {
 	// 获取到Activiti ProcessEngine
